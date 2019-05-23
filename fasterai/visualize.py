@@ -150,9 +150,9 @@ class VideoColorizer():
         if colorized_path.exists(): colorized_path.unlink()
         fps = self._get_fps(source_path)
 
-        ffmpeg.input(str(colorframes_path_template), format='image2', vcodec='mjpeg', framerate=str(fps)) \
+        print(ffmpeg.input(str(colorframes_path_template), format='image2', vcodec='mjpeg', framerate=str(fps)) \
             .output(str(colorized_path), crf=17, vcodec='libx264') \
-            .run(capture_stdout=True)
+            .run(capture_stdout=True))
 
         result_path = self.result_folder/source_path.name
         if result_path.exists(): result_path.unlink()
